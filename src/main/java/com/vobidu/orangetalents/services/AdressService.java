@@ -5,8 +5,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.vobidu.orangetalents.dto.AdressDTO;
-import com.vobidu.orangetalents.entities.adress;
+import com.vobidu.orangetalents.dto.AdressInsertDTO;
+import com.vobidu.orangetalents.entities.Adress;
 import com.vobidu.orangetalents.entities.User;
 import com.vobidu.orangetalents.repositories.AdressRepository;
 import com.vobidu.orangetalents.repositories.UserRepository;
@@ -20,8 +20,8 @@ public class AdressService {
 	private UserRepository UserRepository;
 
 	@Transactional
-	public AdressDTO insert(AdressDTO dto) {
-		adress entity = new adress();
+	public AdressInsertDTO insert(AdressInsertDTO dto) {
+		Adress entity = new Adress();
 		
 		entity.setStreet(dto.getStreet());
 		entity.setState(dto.getState());
@@ -37,7 +37,7 @@ public class AdressService {
 		
 		entity = repository.save(entity);
 				
-		return new AdressDTO(entity, entity.getUser());
+		return new AdressInsertDTO(entity);
 	}
 
 }

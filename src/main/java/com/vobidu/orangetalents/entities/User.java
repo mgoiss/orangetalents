@@ -2,12 +2,16 @@ package com.vobidu.orangetalents.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -28,16 +32,20 @@ public class User implements Serializable {
 	private String cpf;
 	private Date birthDate;
 	
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER )
+	private List<Adress> adress = new ArrayList<>();
+	
 	public User() {
 		
 	}
 
-	public User(Long id, String name, String email, String cpf, Date birthDate) {
+	public User(Long id, String name, String email, String cpf, Date birthDate, List<Adress> adress) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.cpf = cpf;
 		this.birthDate = birthDate;
+		this.adress = adress;
 	}
 
 	public Long getId() {
@@ -78,6 +86,10 @@ public class User implements Serializable {
 
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
+	}
+
+	public List<Adress> getAdress() {
+		return adress;
 	}
 
 	@Override

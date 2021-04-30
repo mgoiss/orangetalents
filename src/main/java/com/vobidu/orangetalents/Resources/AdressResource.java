@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.vobidu.orangetalents.dto.AdressDTO;
+import com.vobidu.orangetalents.dto.AdressInsertDTO;
 import com.vobidu.orangetalents.services.AdressService;
 
 @RestController
@@ -21,7 +21,7 @@ public class AdressResource {
 	private AdressService service;
 	
 	@PostMapping
-	public ResponseEntity<AdressDTO> insert(@RequestBody AdressDTO dto) {
+	public ResponseEntity<AdressInsertDTO> insert(@RequestBody AdressInsertDTO dto) {
 		dto = service.insert(dto);
 		
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")

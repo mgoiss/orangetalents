@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_adress")
-public class adress implements Serializable {
+public class Adress implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -28,11 +28,11 @@ public class adress implements Serializable {
 	@ManyToOne
 	private User user;
 	
-	public adress() {
+	public Adress() {
 		
 	}
 	
-	public adress(Long id, String street, String number, String complement, String district, String city, String state,
+	public Adress(Long id, String street, String number, String complement, String district, String city, String state,
 			String postalCode, User user) {
 		super();
 		this.id = id;
@@ -134,7 +134,7 @@ public class adress implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		adress other = (adress) obj;
+		Adress other = (Adress) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

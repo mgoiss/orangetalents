@@ -1,6 +1,8 @@
 package com.vobidu.orangetalents.dto;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.vobidu.orangetalents.entities.User;
 
@@ -11,6 +13,8 @@ public class UserDTO {
 	private String email;
 	private String cpf;
 	private Date birthDate;	
+	
+	private List<AdressDTO> adress = new ArrayList<>();
 	
 
 	public UserDTO() {
@@ -31,7 +35,9 @@ public class UserDTO {
 		this.name = user.getName();
 		this.email = user.getEmail();
 		this.cpf = user.getCpf();
-		this.birthDate = user.getBirthDate();		
+		this.birthDate = user.getBirthDate();	
+		
+		user.getAdress().forEach(entity -> this.adress.add(new AdressDTO(entity)));
 	}
 
 	public Long getId() {
@@ -72,6 +78,9 @@ public class UserDTO {
 
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
-	}	
-	
+	}
+
+	public List<AdressDTO> getAdress() {
+		return adress;
+	}		
 }

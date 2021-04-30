@@ -1,7 +1,6 @@
 package com.vobidu.orangetalents.dto;
 
-import com.vobidu.orangetalents.entities.adress;
-import com.vobidu.orangetalents.entities.User;
+import com.vobidu.orangetalents.entities.Adress;
 
 public class AdressDTO {
 	
@@ -12,9 +11,7 @@ public class AdressDTO {
 	private String district;
 	private String city;
 	private String state;
-	private String postalCode;
-	
-	private UserDTO user;
+	private String postalCode;		
 	
 	public AdressDTO() {
 		
@@ -33,7 +30,7 @@ public class AdressDTO {
 		this.postalCode = postalCode;
 	}
 
-	public AdressDTO(adress andress) {
+	public AdressDTO(Adress andress) {
 		this.id = andress.getId();
 		this.street = andress.getStreet();
 		this.number = andress.getNumber();
@@ -42,11 +39,6 @@ public class AdressDTO {
 		this.city = andress.getCity();
 		this.state = andress.getState();
 		this.postalCode = andress.getPostalCode();
-	}
-	
-	public AdressDTO(adress andress, User user) {
-		this(andress);
-		this.user = new UserDTO(user);
 	}
 
 	public Long getId() {
@@ -111,13 +103,5 @@ public class AdressDTO {
 
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
-	}
-
-	public UserDTO getUser() {
-		return user;
-	}
-
-	public void setUser(UserDTO user) {
-		this.user = user;
-	}		
+	}	
 }
