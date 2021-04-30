@@ -2,6 +2,8 @@ package com.vobidu.orangetalents.resources;
 
 import java.net.URI;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +23,7 @@ public class AdressResource {
 	private AdressService service;
 	
 	@PostMapping
-	public ResponseEntity<AdressInsertDTO> insert(@RequestBody AdressInsertDTO dto) {
+	public ResponseEntity<AdressInsertDTO> insert(@Valid @RequestBody AdressInsertDTO dto) {
 		dto = service.insert(dto);
 		
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")

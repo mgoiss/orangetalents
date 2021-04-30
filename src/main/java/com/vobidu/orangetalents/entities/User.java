@@ -1,7 +1,7 @@
 package com.vobidu.orangetalents.entities;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class User implements Serializable {
 	
 	@Column(unique = true)
 	private String cpf;
-	private Date birthDate;
+	private LocalDate birthDate;
 	
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER )
 	private List<Adress> adress = new ArrayList<>();
@@ -39,7 +39,7 @@ public class User implements Serializable {
 		
 	}
 
-	public User(Long id, String name, String email, String cpf, Date birthDate, List<Adress> adress) {
+	public User(Long id, String name, String email, String cpf, LocalDate birthDate, List<Adress> adress) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -80,11 +80,11 @@ public class User implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public Date getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
 

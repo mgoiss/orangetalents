@@ -1,18 +1,29 @@
 package com.vobidu.orangetalents.dto;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.vobidu.orangetalents.entities.User;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 
+import com.vobidu.orangetalents.entities.User;
+import com.vobidu.orangetalents.services.validation.UserInsertValid;
+
+@UserInsertValid
 public class UserDTO {
 	
 	private Long id;
+	@NotBlank(message = "O campo nome é obrigatório")
 	private String name;
+	@Email(message = "Informe um email válido")
 	private String email;
+	@Pattern(message = "CPF invalido", regexp = "(^\\d{3}\\x2E\\d{3}\\x2E\\d{3}\\x2D\\d{2}$)")
 	private String cpf;
-	private Date birthDate;	
+	@Past(message = "Data de nascimento Inválida")
+	private LocalDate birthDate;	
 	
 	private List<AdressDTO> adress = new ArrayList<>();
 	
@@ -21,7 +32,7 @@ public class UserDTO {
 		
 	}
 
-	public UserDTO(Long id, String name, String email, String cpf, Date birthDate) {
+	public UserDTO(Long id, String name, String email, String cpf, LocalDate birthDate) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -72,11 +83,11 @@ public class UserDTO {
 		this.cpf = cpf;
 	}
 
-	public Date getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
 

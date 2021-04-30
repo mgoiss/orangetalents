@@ -1,16 +1,24 @@
 package com.vobidu.orangetalents.dto;
 
+import javax.validation.constraints.NotBlank;
+
 import com.vobidu.orangetalents.entities.Adress;
 
 public class AdressDTO {
 	
 	private Long id;
+	@NotBlank(message = "O campo Rua é obrigatório")
 	private String street;
-	private String number;
+	@NotBlank(message = "O campo Numero é obrigatório")
+	private String number;	
 	private String complement;
+	@NotBlank(message = "O campo Bairro é obrigatório")
 	private String district;
+	@NotBlank(message = "O campo Cidade é obrigatório")
 	private String city;
+	@NotBlank(message = "O campo Estado é obrigatório")
 	private String state;
+	@NotBlank(message = "O campo Código Postal é obrigatório")
 	private String postalCode;		
 	
 	public AdressDTO() {
