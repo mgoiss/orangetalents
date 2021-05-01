@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.vobidu.orangetalents.dto.UserDTO;
+import com.vobidu.orangetalents.dto.UserListDTO;
 import com.vobidu.orangetalents.services.UserService;
 
 @RestController
@@ -26,8 +27,8 @@ public class UserResource {
 	
 	//EndPoint Listar Usuário e Endereços
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
-		UserDTO dto = service.findById(id);
+	public ResponseEntity<UserListDTO> findById(@PathVariable Long id) {
+		UserListDTO dto = service.findById(id);
 		
 		return ResponseEntity.ok().body(dto);
 	}

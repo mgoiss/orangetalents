@@ -1,6 +1,7 @@
 package com.vobidu.orangetalents.dto;
 
 import com.vobidu.orangetalents.entities.Adress;
+import com.vobidu.orangetalents.entities.User;
 
 public class AdressInsertDTO extends AdressDTO  {
 	
@@ -10,8 +11,9 @@ public class AdressInsertDTO extends AdressDTO  {
 		
 	}
 	
-	public AdressInsertDTO(Adress andress) {
-		super(andress);
+	public AdressInsertDTO(Adress adress, User user) {
+		super(adress);
+		this.user = new UserDTO(user);
 	}
 
 	public UserDTO getUser() {

@@ -1,8 +1,6 @@
 package com.vobidu.orangetalents.dto;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -23,9 +21,7 @@ public class UserDTO {
 	@Pattern(message = "CPF invalido", regexp = "(^\\d{3}\\x2E\\d{3}\\x2E\\d{3}\\x2D\\d{2}$)")
 	private String cpf;
 	@Past(message = "Data de nascimento Inválida")
-	private LocalDate birthDate;	
-	
-	private List<AdressDTO> adress = new ArrayList<>();
+	private LocalDate birthDate;		
 	
 
 	public UserDTO() {
@@ -47,8 +43,6 @@ public class UserDTO {
 		this.email = user.getEmail();
 		this.cpf = user.getCpf();
 		this.birthDate = user.getBirthDate();	
-		
-		user.getAdress().forEach(entity -> this.adress.add(new AdressDTO(entity)));
 	}
 
 	public Long getId() {
@@ -89,9 +83,5 @@ public class UserDTO {
 
 	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
-	}
-
-	public List<AdressDTO> getAdress() {
-		return adress;
 	}		
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vobidu.orangetalents.dto.UserDTO;
+import com.vobidu.orangetalents.dto.UserListDTO;
 import com.vobidu.orangetalents.entities.User;
 import com.vobidu.orangetalents.repositories.UserRepository;
 import com.vobidu.orangetalents.services.exceptions.EntityNotFoundException;
@@ -18,11 +19,11 @@ public class UserService {
 	private UserRepository repository;
 	
 	@Transactional
-	public UserDTO findById(Long id) {
+	public UserListDTO findById(Long id) {
 		Optional<User> obj = repository.findById(id);
 		User entity = obj.orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado"));
 		
-		return new UserDTO(entity);
+		return new UserListDTO(entity);
 	}
 	
 	@Transactional
