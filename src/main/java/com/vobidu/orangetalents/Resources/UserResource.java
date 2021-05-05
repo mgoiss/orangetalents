@@ -1,4 +1,4 @@
-package com.vobidu.orangetalents.resources;
+package com.vobidu.orangetalents.Resources;
 
 import java.net.URI;
 

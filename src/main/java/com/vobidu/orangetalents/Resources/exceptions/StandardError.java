@@ -1,4 +1,4 @@
-package com.vobidu.orangetalents.resources.exceptions;
+package com.vobidu.orangetalents.Resources.exceptions;
 
 import java.io.Serializable;
 import java.time.Instant;

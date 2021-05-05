@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.vobidu.orangetalents.dto.UserDTO;
 import com.vobidu.orangetalents.entities.User;
 import com.vobidu.orangetalents.repositories.UserRepository;
-import com.vobidu.orangetalents.resources.exceptions.FieldMessage;
+import com.vobidu.orangetalents.Resources.exceptions.FieldMessage;
 
 
 public class UserInsertValidator implements ConstraintValidator<UserInsertValid, UserDTO> {

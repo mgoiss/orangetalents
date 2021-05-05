@@ -1,5 +1,7 @@
 package com.vobidu.orangetalents.services;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import com.vobidu.orangetalents.entities.Adress;
 import com.vobidu.orangetalents.entities.User;
 import com.vobidu.orangetalents.repositories.AdressRepository;
 import com.vobidu.orangetalents.repositories.UserRepository;
+import com.vobidu.orangetalents.services.exceptions.EntityNotFoundException;
 
 @Service
 public class AdressService {
@@ -29,14 +32,12 @@ public class AdressService {
 		entity.setNumber(dto.getNumber());
 		entity.setComplement(dto.getComplement());
 		entity.setDistrict(dto.getDistrict());
-		entity.setPostalCode(dto.getPostalCode());
-		
-		//Pegando o USUÁRIO no Banco	
-		User user = UserRepository.getOne(dto.getUser().getId());
-		entity.setUser(user);
-		
-		entity = repository.save(entity);
-				
+		entity.setPostalCode(dto.getPostalCode());		
+		Optional<User> obj = UserRepository.findById(dto.getUser().getId());
+		User user = obj.orElseThrow(
+				() -> new EntityNotFoundException("Usuário não encontrado"));
+		entity.setUser(user);		
+		entity = repository.save(entity);				
 		return new AdressInsertDTO(entity, entity.getUser());
 	}
 

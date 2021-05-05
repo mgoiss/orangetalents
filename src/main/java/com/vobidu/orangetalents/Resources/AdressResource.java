@@ -1,4 +1,4 @@
-package com.vobidu.orangetalents.resources;
+package com.vobidu.orangetalents.Resources;
 
 import java.net.URI;
 
@@ -16,7 +16,7 @@ import com.vobidu.orangetalents.dto.AdressInsertDTO;
 import com.vobidu.orangetalents.services.AdressService;
 
 @RestController
-@RequestMapping(value = "/andress")
+@RequestMapping(value = "/adress")
 public class AdressResource {
 	
 	@Autowired
